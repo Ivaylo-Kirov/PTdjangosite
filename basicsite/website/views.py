@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 
 # Create your views here.
@@ -11,3 +11,11 @@ def about(request):
         'name': 'ivo'
     }
     return render(request, 'website/about.html', context)
+
+def api(request):
+    responseData = {
+        'id': 4,
+        'name': 'Test Response',
+        'roles' : ['Admin','User']
+    }
+    return JsonResponse(responseData)
